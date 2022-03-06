@@ -1,0 +1,84 @@
+// ----- Font -----
+// Font Size
+.font-s-4xl {
+  font-size: 3rem;
+}
+
+// Font Weight
+.font-w-700 {
+  font-weight: 700;
+}
+
+// ----- Button _____
+// Buttons Style
+.btn-style {
+  background: $main-blue;
+  border-radius: 0.8rem;
+  transition: 0.2s;
+  cursor: pointer;
+
+  &:hover {
+    background: $second-blue;
+  }
+
+//   &:active {
+//     background: $main-blue;
+//   }
+}
+
+// ---- Icon Box -----
+.icon-s {
+  width: 4rem;
+  height: 4rem;
+  @include flex-jc-ic();
+  color: $black;
+  // padding: 1rem;
+  border-radius: 50%;
+  font-size: 1.8rem;
+  transition: 0.2s;
+  cursor: pointer;
+
+  &:hover {
+    background: rgba(202, 202, 202, 0.349);
+  }
+}
+
+// ----- Input -----
+.input-box {
+  @include flex-jc-ic();
+  background: $gray-lite;
+  border-radius: 0.8rem;
+
+  input {
+    background: $Transparent-0;
+    padding: 1.2rem;
+  }
+
+  button {
+    width: 4.1rem;
+    height: 4.1rem;
+    @include flex-jc-ic();
+    background: $Transparent-0;
+    font-size: 1.8rem;
+
+    i {
+      color: $text-color;
+    }
+
+    &:hover {
+      i {
+        color: $white;
+      }
+    }
+  }
+
+  &:focus-within   {
+    button {
+      background: $main-blue;
+    }
+
+    i {
+      color: $white;
+    }
+  }
+}

@@ -1,3 +1,91 @@
+.font-s-4xl {
+  font-size: 3rem;
+}
 
+.font-w-700 {
+  font-weight: 700;
+}
+
+.btn-style {
+  background: #4c6fff;
+  border-radius: 0.8rem;
+  transition: 0.2s;
+  cursor: pointer;
+}
+.btn-style:hover {
+  background: #4d5bec;
+}
+
+.icon-s {
+  width: 4rem;
+  height: 4rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #000000;
+  border-radius: 50%;
+  font-size: 1.8rem;
+  transition: 0.2s;
+  cursor: pointer;
+}
+.icon-s:hover {
+  background: rgba(202, 202, 202, 0.349);
+}
+
+.input-box {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: #f1f4f8;
+  border-radius: 0.8rem;
+}
+.input-box input {
+  background: rgba(0, 0, 0, 0);
+  padding: 1.2rem;
+}
+.input-box button {
+  width: 4.1rem;
+  height: 4.1rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: rgba(0, 0, 0, 0);
+  font-size: 1.8rem;
+}
+.input-box button i {
+  color: #8a9caa;
+}
+.input-box button:hover i {
+  color: #ffffff;
+}
+.input-box:focus-within button {
+  background: #4c6fff;
+}
+.input-box:focus-within i {
+  color: #ffffff;
+}
+
+.main-header {
+  height: 8vh;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: #fff;
+  padding: 0 10rem;
+  box-shadow: inset 0px -1px 0px #f3f3f4;
+}
+
+.logo {
+  color: #4c6fff;
+}
+.logo:hover {
+  color: #4d5bec;
+}
+
+.header-nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
 
 /*# sourceMappingURL=header.css.map */

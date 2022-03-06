@@ -4,3 +4,24 @@
 @import '../global-styling/colors';
 @import '../global-styling/components';
 
+.main-header {
+  height: 8vh;
+  @include flex-jb-ic();
+  background: #fff;
+  padding: 0 10rem;
+  box-shadow: inset 0px -1px 0px #f3f3f4;
+}
+
+// Main header logo
+.logo {
+  color: $main-blue;
+
+  &:hover {
+    color: $second-blue
+  }
+}
+
+// Navigation
+.header-nav {
+  @include flex-jb-ic();
+}
