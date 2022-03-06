@@ -15,6 +15,9 @@
 .btn-style:hover {
   background: #4d5bec;
 }
+.btn-style:hover i {
+  color: #ffffff;
+}
 
 .icon-s {
   width: 4rem;
@@ -55,11 +58,11 @@
 .input-box button i {
   color: #8a9caa;
 }
-.input-box button:hover i {
-  color: #ffffff;
-}
 .input-box:focus-within button {
   background: #4c6fff;
+}
+.input-box:focus-within button:hover {
+  background: #4d5bec;
 }
 .input-box:focus-within i {
   color: #ffffff;
