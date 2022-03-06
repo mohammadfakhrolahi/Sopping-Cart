@@ -1,0 +1,11 @@
+@mixin flex-jc-ic {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+@mixin flex-jb-ic {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
