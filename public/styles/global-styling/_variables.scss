@@ -9,3 +9,24 @@
   justify-content: space-between;
   align-items: center;
 }
+
+@mixin flex-js-is {
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-start;
+}
+
+// Flex Column
+@mixin column-jc-ic {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+@mixin column-js-ic {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+}

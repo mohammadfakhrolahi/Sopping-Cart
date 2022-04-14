@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- Font Awesome icons -->
+  <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+      integrity="sha512-9usAa10IRO0HhonpyAIVpjrylPvoDwiPUiKdWk5t3PyolY1cOd4DSE0Ga+ri4AuTroPR5aQvXU9xC6qOPnzFeg=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"/>
+  <link rel="stylesheet" href="./public/styles/shared/header.css">
+  <link rel="stylesheet" href="./public/styles/main.css">
+  <title>Sopping Cart</title>
+</head>
+<body>
+  <header class="main-header">
+    <a href="#" class="logo font-s-4xl font-w-700">Logo</a>
+
+    <form class="input-box">
+      <input type="text" placeholder="Search...">
+      <button class="btn-style">
+        <i class="fa-solid fa-magnifying-glass"></i>
+      </button>
+    </form>
+
+    <nav class="header-nav">
+      <span class="cart-icon icon-s">
+        <i class="fa-solid fa-cart-shopping"></i>
+      </span>
+    </nav>
+  </header>
+
+  <main>
+    <section class="section-style">
+      <div class="product-card">
+        <div class="product-card__image-box">
+          <img src="./public/images/1.jpg" class="product-card__image" alt="Nike running shoe" title="Nike running shoe">
+          <div class="icon-box-s">
+            <i class="fa-solid fa-heart"></i>
+          </div>
+        </div>
+  
+        <div class="product-info">
+          <h3 class="product-name">Nike Air Max</h3>
+  
+          <div class="buy-container">
+            <div class="price-container">
+              <span class="product-price-header">Price:</span> &nbsp;
+      
+              <span class="product-price">$199</span>
+            </div>
+              
+            <button class="add-to-cart-btn btn-s">
+              <i class="fa-solid fa-2x fa-cart-plus"></i>
+            </button>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+</body>
+</html>

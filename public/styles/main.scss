@@ -2,3 +2,67 @@
 @import './global-styling/variables';
 @import './global-styling/colors';
 @import './global-styling/components';
+
+main {
+  width: 100%;
+  height: 100vh;
+  @include flex-js-is();
+  background: $secondary-bg;
+  padding: 12rem 10rem 0 10rem;
+}
+
+// Section Style
+.section-style {
+  width: 100%;
+  @include flex-js-is();
+}
+
+// ----- Product Card -----
+.product-card {
+  width: 30rem;
+  @include column-jc-ic();
+  background: $white;
+  padding: 1rem;
+  border-radius: 2rem;
+
+  .product-card__image-box {
+    width: 100%;
+    height: 25vh;
+    @include flex-jc-ic();
+    border-radius: 1.5rem;
+    overflow: hidden;
+
+    // Like Image
+    .icon-box-s {
+      display: none;
+    }
+  }
+
+  //Info
+  .product-info {
+    width: 100%;
+    @include column-js-ic();
+    padding: 1.5rem;
+
+    h3 {
+      font-weight: 500;
+    }
+
+    .buy-container {
+      width: 100%;
+      @include flex-jb-ic();
+      margin-top: 1rem;
+
+      // Price
+      .price-container {
+        span {
+          color: $secondary-text;
+          font: {
+            weight: 500;
+            size: 1.6rem;
+          }
+        }
+      }
+    }
+  }
+}

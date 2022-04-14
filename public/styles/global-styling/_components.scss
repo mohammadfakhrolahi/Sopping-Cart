@@ -30,6 +30,21 @@
   //   }
 }
 
+.btn-s {
+  width: 4rem;
+  height: 4rem;
+  @include flex-jc-ic();
+  background: $main-blue;
+  color: $white;
+  border-radius: 0.8rem;
+  transition: 0.2s;
+  cursor: pointer;
+
+  &:hover {
+    background: $second-blue;
+  }
+}
+
 // ---- Icon Box -----
 .icon-s {
   width: 4rem;
@@ -66,7 +81,7 @@
     font-size: 1.8rem;
 
     i {
-      color: $text-color;
+      color: $secondary-text;
     }
   }
 

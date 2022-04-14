@@ -5,8 +5,10 @@
 @import '../global-styling/components';
 
 .main-header {
+  width: 100%;
   height: 8vh;
   @include flex-jb-ic();
+  position: fixed;
   background: #fff;
   padding: 0 10rem;
   box-shadow: inset 0px -1px 0px #f3f3f4;
