@@ -1,33 +1,16 @@
-// const User = function(id, email) {
-//   this.id = id
-//   this.email = email
-// }
+// Cart
+let cart = []
 
-// User.prototype.userInfo = function() {
-//   return `ID: ${this.id} - Email: ${this.email}`
-// }
+// Get produc data from product.json
+class Product {}
 
-// const username = new User(7, 'itsmohammad@gmail.com')
+// Show product data in DOM
+class View {}
 
-// console.log(username.userInfo())
+class Storage {}
 
-class User {
-  constructor(id, email) {
-    this.id = id
-    this.email = email
-  }
-  userInfo() {
-    return `ID: ${this.id} - Email: ${this.email}`
-  }
-}
-
-class Job extends User{
-  constructor(id, email, jobTitle) {
-    super(id, email)
-    this.jobTitle = jobTitle
-  }
-}
-
-const username =  new Job(7, 'itsmohammad@gmail.com', 'Developer')
-
-console.log(username)
+// Create objects whene DOM loaded
+document.addEventListener('DOMContentLoaded', () => {
+  const view = new View
+  const product = new Product
+})
