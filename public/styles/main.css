@@ -182,14 +182,17 @@ main {
   justify-content: flex-start;
   align-items: flex-start;
   background: #e8edf6;
-  padding: 12rem 10rem 0 10rem;
+  padding: 12rem 10rem;
 }
 
 .section-style {
   width: 100%;
-  display: flex;
-  justify-content: flex-start;
-  align-items: flex-start;
+}
+
+.products-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(30rem, 1fr));
+  grid-gap: 2rem;
 }
 
 .product-card {

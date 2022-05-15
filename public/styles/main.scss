@@ -8,13 +8,19 @@ main {
   height: 100vh;
   @include flex-js-is();
   background: $secondary-bg;
-  padding: 12rem 10rem 0 10rem;
+  padding: 12rem 10rem;
 }
 
 // Section Style
 .section-style {
   width: 100%;
-  // @include flex-js-is();
+}
+
+// Products Center
+.products-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(30rem, 1fr));
+  grid-gap: 2rem;
 }
 
 // ----- Product Card -----
