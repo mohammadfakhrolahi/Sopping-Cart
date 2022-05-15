@@ -12,6 +12,7 @@ class Product {
 
       let products = data.items
 
+      // Extract data
       products = products.map((item) => {
         const { title, price } = item.fields
         const { id } = item.sys
@@ -50,7 +51,7 @@ class View {
               <span class="product-price">$${item.price}</span>
             </div>
               
-            <button class="add-to-cart-btn btn-s">
+            <button class="add-to-cart-btn btn-s" data-id=${item.id}>
               <i class="fa-solid fa-2x fa-cart-plus"></i>
             </button>
           </div>
@@ -61,21 +62,49 @@ class View {
     
     productsDOM.innerHTML = result
   }
+
+  // Select add to cart buttons
+  getCartButtons() {
+    const buttons = [...document.querySelectorAll('.add-to-cart-btn')]
+
+    buttons.forEach((item) => {
+      let id = item.dataset.id
+
+      item.addEventListener('click', (e) => {
+        let cartItem = Storage.getProduct(id)
+        cart = [...cart, cartItem]
+        console.log(cart)
+      })
+    })
+  }
 }
 
 class Storage {
+  // Save products in local storage
   static saveProducts(products) {
     localStorage.setItem('products', JSON.stringify(products))
+  }
+
+   // Find product in localStorage
+   static getProduct(id) {
+    let products = JSON.parse(localStorage.getItem('products'))
+
+    return products.find(item => item.id === id)
   }
 }
 
 // Create objects whene DOM loaded
 document.addEventListener('DOMContentLoaded', () => {
-  const view = new View
-  const product = new Product
+  const view = new View()
+  const product = new Product()
 
-  product.getProducts().then((data) => {
-    view.displayProdcuts(data)
-    Storage.saveProducts(data)
-  })
+  product
+    .getProducts()
+    .then((data) => {
+      view.displayProdcuts(data)
+      Storage.saveProducts(data)
+    })
+    .then(() => {
+      view.getCartButtons()
+    })
 })
