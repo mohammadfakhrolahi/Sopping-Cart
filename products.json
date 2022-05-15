@@ -5,7 +5,7 @@
       "fields": {
         "title": "Product 1",
         "price": 89,
-        "image": { "fields": { "file": { "url": "./public/images/" } } }
+        "image": { "fields": { "file": { "url": "./public/images/product-1.jpg" } } }
       }
     },
     {

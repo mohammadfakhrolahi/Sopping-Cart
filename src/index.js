@@ -47,7 +47,7 @@ class View {
             <div class="price-container">
               <span class="product-price-header">Price:</span> &nbsp;
       
-              <span class="product-price">${item.price}</span>
+              <span class="product-price">$${item.price}</span>
             </div>
               
             <button class="add-to-cart-btn btn-s">
@@ -63,12 +63,19 @@ class View {
   }
 }
 
-class Storage {}
+class Storage {
+  static saveProducts(products) {
+    localStorage.setItem('products', JSON.stringify(products))
+  }
+}
 
 // Create objects whene DOM loaded
 document.addEventListener('DOMContentLoaded', () => {
   const view = new View
   const product = new Product
 
-  product.getProducts().then((data) => view.displayProdcuts(data))
+  product.getProducts().then((data) => {
+    view.displayProdcuts(data)
+    Storage.saveProducts(data)
+  })
 })
