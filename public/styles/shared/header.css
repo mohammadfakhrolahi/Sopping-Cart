@@ -19,6 +19,18 @@
   color: #ffffff;
 }
 
+.btn-xs {
+  background: #FA243C;
+  border-radius: 3rem;
+  padding: 0.5rem 1rem;
+  color: #ffffff;
+  font-size: 1.1rem;
+  transition: 0.2s;
+}
+.btn-xs:hover {
+  background: #e7253c;
+}
+
 .btn-s {
   width: 4rem;
   height: 4rem;
@@ -84,6 +96,19 @@
   color: #ffffff;
 }
 
+.badge {
+  width: fit-content;
+  height: 1.7rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: #4c6fff;
+  color: #ffffff;
+  padding: 0 0.5rem;
+  border-radius: 3rem;
+  font-size: 1.2rem;
+}
+
 .main-header {
   width: 100%;
   height: 8vh;
@@ -107,6 +132,15 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
+}
+
+#cart-items {
+  position: relative;
+}
+#cart-items .cart-items__badge {
+  position: absolute;
+  bottom: 0;
+  right: 0;
 }
 
 /*# sourceMappingURL=header.css.map */

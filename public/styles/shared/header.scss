@@ -27,3 +27,13 @@
 .header-nav {
   @include flex-jb-ic();
 }
+
+#cart-items {
+  position: relative;
+
+  .cart-items__badge {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+  }  
+}

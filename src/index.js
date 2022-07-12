@@ -1,4 +1,11 @@
 const productsDOM = document.querySelector('.products-container')
+const cartItemsBtn = document.querySelector('#cart-items')
+const cartItemsCloseBtn = document.querySelector('.close-cart-menu')
+const cartItemsBadge = document.querySelector('.cart-items__badge')
+const cartTotal = document.querySelector('.cart-total')
+const cartMenu = document.querySelector('.cart-menu')
+const overlay = document.querySelector('.overlay')
+const cartContent = document.querySelector('.cart-content')
 
 // Cart
 let cart = []
@@ -13,7 +20,7 @@ class Product {
       let products = data.items
 
       // Extract data
-      products = products.map((item) => {
+      products = products.map(item => {
         const { title, price } = item.fields
         const { id } = item.sys
         const image = item.fields.image.fields.file.url
@@ -29,7 +36,7 @@ class Product {
 
 // Show product data in DOM
 class View {
-  displayProdcuts(products) {
+  displayProducts(products) {
     let result = ''
     products.forEach((item) => {
       result += `
@@ -71,12 +78,84 @@ class View {
       let id = item.dataset.id
 
       item.addEventListener('click', (e) => {
-        let cartItem = Storage.getProduct(id)
+        let cartItem = { ...Storage.getProduct(id), amount: 1 }
         cart = [...cart, cartItem]
-        console.log(cart)
+        
+        Storage.saveCart(cart)
+
+        this.setCartValues(cart)
+        this.addCartIem(cartItem)
       })
     })
   }
+
+  // Cart value
+  setCartValues(cart) {
+    let totalPrice = 0
+    let totalItems = 0
+
+    cart.map(item => {
+      totalPrice = totalPrice + item.price * item.amount
+      totalItems = totalItems + item.amount
+    })
+
+    cartTotal.innerText = `Total: $${totalPrice}`
+    cartItemsBadge.innerText = totalItems
+  }
+
+  // Add product to cart
+  addCartIem(item) {
+   const div = document.createElement('div')
+   div.classList.add('cart-item')
+
+   div.innerHTML = `
+    <div class="image-box-s">
+    <img src="${item.image}" alt="Product image">
+    </div>
+    <p class="cart-item__name">${item.title}</p>
+    <p class="cart-item__price">$${item.price}</p>
+    <p class="cart-item__badge badge">${item.amount}</p>
+    <button class="cart-item__remove-btn btn-xs">Remove</button>
+   `
+   cartContent.appendChild(div)
+  }
+
+  // Open cart //Todo. merge showCartMenu() add closeCartMenu()
+  showCartMenu() {
+    cartItemsBtn.addEventListener('click',() => {
+      overlay.classList.add('visibleOverlay')
+      cartMenu.classList.add('show-cart-menu')
+    })
+  }
+
+  // Close cart
+  closeCartMenu() {
+    const closeCartMenu = () => {
+      overlay.classList.remove('visibleOverlay')
+      cartMenu.classList.remove('show-cart-menu')
+    }
+
+    cartItemsCloseBtn.addEventListener('click', () => closeCartMenu())
+
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') {
+        closeCartMenu()
+      }
+    })
+  }
+
+  // Read and Calculate again setCartValues()
+  initApp() {
+    cart = Storage.getCart()
+    this.setCartValues(cart)
+    cart.forEach(item => this.addCartIem(item))
+    // this.populate(cart)
+  }
+
+  // Run again addCartIem()
+  // populate(cart) {
+  //   cart.forEach(item => this.addCartIem(item))
+  // }
 }
 
 class Storage {
@@ -85,26 +164,40 @@ class Storage {
     localStorage.setItem('products', JSON.stringify(products))
   }
 
-   // Find product in localStorage
-   static getProduct(id) {
+  // Find product in localStorage
+  static getProduct(id) {
     let products = JSON.parse(localStorage.getItem('products'))
-
     return products.find(item => item.id === id)
+  }
+
+  // Save cart to local storage
+  static saveCart(cart) {
+    localStorage.setItem('cart', JSON.stringify(cart))
+  }
+
+  // Check cart exist
+  static getCart() {
+    return localStorage.getItem('cart') ? JSON.parse(localStorage.getItem('cart')) : []
   }
 }
 
-// Create objects whene DOM loaded
+// Create objects when DOM loaded
 document.addEventListener('DOMContentLoaded', () => {
   const view = new View()
   const product = new Product()
 
+  view.initApp()
+  // view.populate(cart)
+
   product
     .getProducts()
     .then((data) => {
-      view.displayProdcuts(data)
+      view.displayProducts(data)
       Storage.saveProducts(data)
     })
     .then(() => {
       view.getCartButtons()
+      view.showCartMenu()
+      view.closeCartMenu()
     })
 })
