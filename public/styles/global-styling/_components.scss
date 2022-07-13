@@ -125,3 +125,23 @@
   border-radius: 3rem;
   font-size: 1.2rem;
 }
+
+// ---- Scrollbar for Chrome ----
+::-webkit-scrollbar {
+  width: 1rem;
+}
+
+::-webkit-scrollbar-track {
+  background: $white;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: $gray;
+  border-radius: 5px;
+}
+
+// ---- Scrollbar for FireFox ----
+:root {
+  scrollbar-color: $gray $white  !important;
+  scrollbar-width: thin !important;
+}
