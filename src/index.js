@@ -122,26 +122,18 @@ class View {
 
   // Open cart //Todo. merge showCartMenu() add closeCartMenu()
   showCartMenu() {
-    cartItemsBtn.addEventListener('click',() => {
-      overlay.classList.add('visibleOverlay')
-      cartMenu.classList.add('show-cart-menu')
-    })
+    overlay.classList.add('visibleOverlay')
+    cartMenu.classList.add('show-cart-menu')
   }
 
   // Close cart
   closeCartMenu() {
-    const closeCartMenu = () => {
-      overlay.classList.remove('visibleOverlay')
-      cartMenu.classList.remove('show-cart-menu')
+    overlay.classList.remove('visibleOverlay')
+    cartMenu.classList.remove('show-cart-menu')
+  
+    if (e.key === 'Escape') {
+      closeCartMenu()
     }
-
-    cartItemsCloseBtn.addEventListener('click', () => closeCartMenu())
-
-    document.addEventListener('keydown', (e) => {
-      if (e.key === 'Escape') {
-        closeCartMenu()
-      }
-    })
   }
 
   // Read and Calculate again setCartValues()
@@ -150,6 +142,11 @@ class View {
     this.setCartValues(cart)
     cart.forEach(item => this.addCartIem(item))
     // this.populate(cart)
+
+    cartItemsBtn.addEventListener('click', this.showCartMenu)
+    cartItemsCloseBtn.addEventListener('click', this.closeCartMenu)
+    overlay.addEventListener('click', this.closeCartMenu)
+    document.addEventListener('keydown', this.closeCartMenu)
   }
 
   // Run again addCartIem()
@@ -197,7 +194,5 @@ document.addEventListener('DOMContentLoaded', () => {
     })
     .then(() => {
       view.getCartButtons()
-      view.showCartMenu()
-      view.closeCartMenu()
     })
 })
