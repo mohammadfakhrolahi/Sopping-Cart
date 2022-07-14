@@ -186,6 +186,7 @@ main {
   width: 70%;
   position: relative;
   @include flex-jc-ic();
+  margin-top: 2rem;
 
   p {
     font: {
@@ -194,12 +195,12 @@ main {
     }
   }
 
-  &:before {
-    content: '';
-    width: 100%;
-    position: absolute;
-    top: -2rem;
-    height: 0.2rem;
-    background: $secondary-bg;
-  }
+  // &:before {
+  //   content: '';
+  //   width: 100%;
+  //   position: absolute;
+  //   top: -2rem;
+  //   height: 0.2rem;
+  //   background: $secondary-bg;
+  // }
 }

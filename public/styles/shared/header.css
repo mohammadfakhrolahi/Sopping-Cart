@@ -25,15 +25,17 @@
 }
 
 .btn-xs {
-  background: #FA243C;
-  border-radius: 3rem;
+  background: transparent;
+  color: #FA243C;
   padding: 0.5rem 1rem;
-  color: #ffffff;
+  border: 0.1rem solid #FA243C;
+  border-radius: 3rem;
   font-size: 1.1rem;
   transition: 0.2s;
 }
 .btn-xs:hover {
   background: #e7253c;
+  color: #ffffff;
 }
 
 .btn-s {

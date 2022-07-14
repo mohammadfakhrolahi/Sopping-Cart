@@ -36,15 +36,17 @@
 }
 
 .btn-xs {
-  background: $red;
-  border-radius: 3rem;
+  background: transparent;
+  color: $red;
   padding: 0.5rem 1rem;
-  color: $white;
+  border: 0.1rem solid $red;
+  border-radius: 3rem;
   font-size: 1.1rem;
   transition: 0.2s;
 
   &:hover {
     background: $red-dark;
+    color: $white;
   }
 }
 

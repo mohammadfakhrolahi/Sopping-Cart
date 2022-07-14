@@ -2,7 +2,7 @@ const productsDOM = document.querySelector('.products-container')
 const cartItemsBtn = document.querySelector('#cart-items')
 const cartItemsCloseBtn = document.querySelector('.close-cart-menu')
 const cartItemsBadge = document.querySelector('.cart-items__badge')
-const cartTotal = document.querySelector('.cart-total')
+const cartTotalValue = document.querySelector('.cart-total__value')
 const cartMenu = document.querySelector('.cart-menu')
 const overlay = document.querySelector('.overlay')
 const cartContent = document.querySelector('.cart-content')
@@ -102,7 +102,7 @@ class View {
       totalItems = totalItems + item.amount
     })
 
-    cartTotal.innerText = `Total: $${totalPrice}`
+    cartTotalValue.innerText = `Total: $${totalPrice}`
     cartItemsBadge.innerText = totalItems
   }
 
@@ -162,10 +162,11 @@ class View {
       this.clearCart()
     })
 
+    // Remove product from cart
     cartContent.addEventListener('click', e => {
       if (e.target.classList.contains('cart-item__remove-btn')) {
         let removeItem = e.target
-        let id = removeItem.id
+        let id = removeItem.dataset.id
 
         cartContent.removeChild(removeItem.parentElement)
 
@@ -193,8 +194,8 @@ class View {
       return item.id !== id
     })
 
-    this.setCartValues(cart)
     Storage.saveCart(cart)
+    this.setCartValues(cart)
   }
 }
 
