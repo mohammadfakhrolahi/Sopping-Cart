@@ -1,58 +1,60 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <!-- Font Awesome icons -->
-  <link
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- Font Awesome icons -->
+    <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
       integrity="sha512-9usAa10IRO0HhonpyAIVpjrylPvoDwiPUiKdWk5t3PyolY1cOd4DSE0Ga+ri4AuTroPR5aQvXU9xC6qOPnzFeg=="
       crossorigin="anonymous"
-      referrerpolicy="no-referrer"/>
-  <link rel="stylesheet" href="./public/styles/shared/header.css">
-  <link rel="stylesheet" href="./public/styles/main.css">
-  <title>Sopping Cart</title>
-</head>
-<body>
-  <div class="overlay"></div>
+      referrerpolicy="no-referrer"
+    />
+    <link rel="stylesheet" href="./public/styles/shared/header.css" />
+    <link rel="stylesheet" href="./public/styles/main.css" />
+    <title>Sopping Cart</title>
+  </head>
+  <body>
+    <div class="overlay"></div>
 
-  <header class="main-header">
-    <a href="#" class="logo font-s-4xl font-w-700">Logo</a>
+    <header class="main-header">
+      <a href="#" class="logo font-s-4xl font-w-700">Logo</a>
 
-    <form class="input-box">
-      <input type="text" placeholder="Search...">
-      <button class="btn-style">
-        <i class="fa-solid fa-magnifying-glass"></i>
-      </button>
-    </form>
+      <form class="input-box">
+        <input type="text" placeholder="Search..." />
+        <button class="btn-style">
+          <i class="fa-solid fa-magnifying-glass"></i>
+        </button>
+      </form>
 
-    <nav class="header-nav">
-      <button class="cart-icon icon-s" id="cart-items">
-        <i class="fa-solid fa-cart-shopping"></i>
-        <div class="cart-items__badge badge">0</div>
-      </button>
-    </nav>
-  </header>
-  
-  <main>
-    <div class="cart-menu">
-      
-      <div class="cart-content">
+      <nav class="header-nav">
+        <button class="cart-icon icon-s" id="cart-items">
+          <i class="fa-solid fa-cart-shopping"></i>
+          <div class="cart-items__badge badge">0</div>
+        </button>
+      </nav>
+    </header>
+
+    <main>
+      <div class="cart-menu">
         <button class="close-cart-menu">close</button>
-      </div>
-      
-      <div class="cart-total">
-        <p class="cart-total__value">Total: </p>
-      </div>
-    </div>
+        <button id="clear-cart">Remove All</button>
+        
+        <div class="cart-content">
+        </div>
 
-    <section class="section-style">
-      <div class="products-container"></div>
-    </section>
-  </main>
+        <div class="cart-total">
+          <p class="cart-total__value">Total:</p>
+        </div>
+      </div>
 
-  <script src="./src/index.js"></script>
-</body>
+      <section class="section-style">
+        <div class="products-container"></div>
+      </section>
+    </main>
+
+    <script src="./src/index.js"></script>
+  </body>
 </html>

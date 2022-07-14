@@ -19,6 +19,11 @@
   color: #ffffff;
 }
 
+.cart-item__amount > i {
+  color: #4c6fff;
+  cursor: pointer;
+}
+
 .btn-xs {
   background: #FA243C;
   border-radius: 3rem;

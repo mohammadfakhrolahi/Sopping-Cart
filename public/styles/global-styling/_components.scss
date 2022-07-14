@@ -30,6 +30,11 @@
   //   }
 }
 
+.cart-item__amount > i {
+  color: $main-blue;
+  cursor: pointer;
+}
+
 .btn-xs {
   background: $red;
   border-radius: 3rem;

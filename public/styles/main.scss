@@ -165,10 +165,13 @@ main {
 }
 
 // Product badge/number
-.cart-item__badge {
+.cart-item__amount {
   grid-column: 3/-1;
   grid-row: 1/2;
   justify-self: end;
+  @include flex-jc-ic();
+  gap: 1rem;
+  font-size: 1.5rem;
 }
 
 // Remove  button

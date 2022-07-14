@@ -6,6 +6,10 @@ const cartTotal = document.querySelector('.cart-total')
 const cartMenu = document.querySelector('.cart-menu')
 const overlay = document.querySelector('.overlay')
 const cartContent = document.querySelector('.cart-content')
+const amountMinus = document.querySelector('#amount-minus')
+const amountPlus = document.querySelector('#amount-plus')
+const clearCartBtn = document.querySelector('#clear-cart')
+const cartItemRemoveBtn = document.querySelectorAll('.cart-item__remove-btn')
 
 // Cart
 let cart = []
@@ -81,9 +85,8 @@ class View {
         let cartItem = { ...Storage.getProduct(id), amount: 1 }
         cart = [...cart, cartItem]
         
-        Storage.saveCart(cart)
-
         this.setCartValues(cart)
+        Storage.saveCart(cart)
         this.addCartIem(cartItem)
       })
     })
@@ -114,13 +117,17 @@ class View {
     </div>
     <p class="cart-item__name">${item.title}</p>
     <p class="cart-item__price">$${item.price}</p>
-    <p class="cart-item__badge badge">${item.amount}</p>
-    <button class="cart-item__remove-btn btn-xs">Remove</button>
+    <div class="cart-item__amount">
+      <i class="fa-solid fa-minus" id="amount-minus"></i>
+      <p class="cart-item__amount-number">${item.amount}</p>
+      <i class="fa-solid fa-plus" id="amount-plus"></i>            
+    </div>
+    <button class="cart-item__remove-btn btn-xs" data-id="${item.id}">Remove</button>
    `
    cartContent.appendChild(div)
   }
 
-  // Open cart //Todo. merge showCartMenu() add closeCartMenu()
+  // Open cart
   showCartMenu() {
     overlay.classList.add('visibleOverlay')
     cartMenu.classList.add('show-cart-menu')
@@ -129,12 +136,11 @@ class View {
   // Close cart
   closeCartMenu() {
     overlay.classList.remove('visibleOverlay')
-    cartMenu.classList.remove('show-cart-menu')
-  
-    if (e.key === 'Escape') {
-      closeCartMenu()
-    }
+    cartMenu.classList.remove('show-cart-menu') 
   }
+
+  // Cart item amount
+
 
   // Read and Calculate again setCartValues()
   initApp() {
@@ -146,13 +152,50 @@ class View {
     cartItemsBtn.addEventListener('click', this.showCartMenu)
     cartItemsCloseBtn.addEventListener('click', this.closeCartMenu)
     overlay.addEventListener('click', this.closeCartMenu)
-    document.addEventListener('keydown', this.closeCartMenu)
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') this.closeCartMenu()
+    })
   }
 
-  // Run again addCartIem()
-  // populate(cart) {
-  //   cart.forEach(item => this.addCartIem(item))
-  // }
+  cartProcess() {
+    clearCartBtn.addEventListener('click', () => {
+      this.clearCart()
+    })
+
+    cartContent.addEventListener('click', e => {
+      if (e.target.classList.contains('cart-item__remove-btn')) {
+        let removeItem = e.target
+        let id = removeItem.id
+
+        cartContent.removeChild(removeItem.parentElement)
+
+        this.removeProduct(id)
+      }
+    })
+  }
+
+  clearCart() {
+    let cartItems = cart.map(item => {
+      return item.id
+    })
+
+    cartItems.map(item => {
+      this.removeProduct(item)
+    })
+
+    while (cartContent.children.length > 0) {
+      cartContent.removeChild(cartContent.children[0])
+    }
+  }
+
+  removeProduct(id) {
+    cart = cart.filter(item => {
+      return item.id !== id
+    })
+
+    this.setCartValues(cart)
+    Storage.saveCart(cart)
+  }
 }
 
 class Storage {
@@ -194,5 +237,6 @@ document.addEventListener('DOMContentLoaded', () => {
     })
     .then(() => {
       view.getCartButtons()
+      view.cartProcess()
     })
 })
