@@ -130,6 +130,20 @@ hr {
   color: #ffffff;
 }
 
+.btn-xs-border {
+  width: 2rem;
+  height: 2rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 0.2rem solid transparent;
+  border-radius: 50%;
+  transition: 0.2s;
+}
+.btn-xs-border:hover {
+  border: 0.2rem solid;
+}
+
 .btn-s {
   width: 4rem;
   height: 4rem;
@@ -332,6 +346,22 @@ main {
   transform: translateX(0%);
 }
 
+.cart-header {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 1rem;
+}
+
+#clear-cart-btn {
+  font-size: 1.4rem;
+  transition: 0.2s;
+}
+#clear-cart-btn:hover {
+  color: #FA243C;
+}
+
 .cart-content {
   width: 100%;
   height: 100vh;
@@ -339,7 +369,24 @@ main {
   flex-direction: column;
   gap: 0.8rem;
   overflow-y: auto;
-  padding: 0 1rem;
+  padding: 2rem 1rem;
+}
+
+.empty-cart-msg {
+  color: #e8edf6;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  display: none;
+}
+.empty-cart-msg p {
+  font-size: 3rem;
+}
+
+.empty-cart-msg-visible {
+  display: flex;
 }
 
 .cart-item {
@@ -402,7 +449,6 @@ main {
   display: flex;
   justify-content: center;
   align-items: center;
-  margin-top: 2rem;
 }
 .cart-total p {
   font-size: 1.8rem;

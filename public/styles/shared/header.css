@@ -38,6 +38,20 @@
   color: #ffffff;
 }
 
+.btn-xs-border {
+  width: 2rem;
+  height: 2rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 0.2rem solid transparent;
+  border-radius: 50%;
+  transition: 0.2s;
+}
+.btn-xs-border:hover {
+  border: 0.2rem solid;
+}
+
 .btn-s {
   width: 4rem;
   height: 4rem;

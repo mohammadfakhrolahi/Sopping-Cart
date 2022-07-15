@@ -39,12 +39,18 @@
 
     <main>
       <div class="cart-menu">
-        <button class="close-cart-menu">
-          <i class="fa-solid fa-2x fa-xmark"></i>
-        </button>
+        <div class="cart-header">
+          <button class="close-cart-menu btn-xs-border">
+            <i class="fa-solid fa-2x fa-xmark"></i>
+          </button>
+  
+          <button id="clear-cart-btn">Remove All</button>
+        </div>
 
-        <button id="clear-cart">Remove All</button>
-
+        <div class="empty-cart-msg">
+          <i class="fa-solid fa-5x fa-cart-shopping"></i>
+          <p>Cart is empty</p>
+        </div>
         <div class="cart-content">
         </div>
 

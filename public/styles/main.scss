@@ -90,7 +90,7 @@ main {
   visibility: visible;
 }
 
-// Cart Menu
+// ---- Cart ----
 .cart-menu {
   width: 45.5rem;
   height: 100vh;
@@ -111,6 +111,22 @@ main {
   transform: translateX(0%);
 }
 
+// Cart header
+.cart-header {
+  width: 100%;
+  @include flex-jb-ic();
+  padding: 0 1rem;
+}
+
+#clear-cart-btn {
+  font-size: 1.4rem;
+  transition: 0.2s;
+
+  &:hover {
+    color: $red;
+  }
+}
+
 .cart-content {
   width: 100%;
   height: 100vh;
@@ -118,7 +134,23 @@ main {
   flex-direction: column;
   gap: 0.8rem;
   overflow-y: auto;
-  padding: 0 1rem;
+  padding: 2rem 1rem;
+}
+
+// Empty cart message
+.empty-cart-msg {
+  color: $secondary-bg;
+  height: 100%;
+  @include column-jc-ic();
+  display: none;
+
+  p {
+    font-size: 3rem;
+  }
+}
+
+.empty-cart-msg-visible {
+  display: flex;
 }
 
 .cart-item {
@@ -186,7 +218,6 @@ main {
   width: 70%;
   position: relative;
   @include flex-jc-ic();
-  margin-top: 2rem;
 
   p {
     font: {

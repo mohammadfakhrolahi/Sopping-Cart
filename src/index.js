@@ -8,8 +8,9 @@ const overlay = document.querySelector('.overlay')
 const cartContent = document.querySelector('.cart-content')
 const amountMinus = document.querySelector('#amount-minus')
 const amountPlus = document.querySelector('#amount-plus')
-const clearCartBtn = document.querySelector('#clear-cart')
+const clearCartBtn = document.querySelector('#clear-cart-btn')
 const cartItemRemoveBtn = document.querySelectorAll('.cart-item__remove-btn')
+const emptyCartMsg = document.querySelector('.empty-cart-msg')
 
 // Cart
 let cart = []
@@ -88,6 +89,7 @@ class View {
         this.setCartValues(cart)
         Storage.saveCart(cart)
         this.addCartIem(cartItem)
+        this.showEmptyCartMsg()
       })
     })
   }
@@ -160,6 +162,7 @@ class View {
   cartProcess() {
     clearCartBtn.addEventListener('click', () => {
       this.clearCart()
+      this.showEmptyCartMsg()
     })
 
     // Remove product from cart
@@ -171,8 +174,11 @@ class View {
         cartContent.removeChild(removeItem.parentElement)
 
         this.removeProduct(id)
+        // this.showEmptyCartMsg()
       }
     })
+
+    
   }
 
   clearCart() {
@@ -182,6 +188,7 @@ class View {
 
     cartItems.map(item => {
       this.removeProduct(item)
+      
     })
 
     while (cartContent.children.length > 0) {
@@ -196,6 +203,13 @@ class View {
 
     Storage.saveCart(cart)
     this.setCartValues(cart)
+    // this.showEmptyCartMsg()
+  }
+
+  showEmptyCartMsg() {
+    cart.length == 0
+      ? emptyCartMsg.classList.add('empty-cart-msg-visible')
+      : emptyCartMsg.classList.remove('empty-cart-msg-visible')
   }
 }
 
@@ -241,3 +255,4 @@ document.addEventListener('DOMContentLoaded', () => {
       view.cartProcess()
     })
 })
+

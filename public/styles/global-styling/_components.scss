@@ -50,6 +50,19 @@
   }
 }
 
+.btn-xs-border {
+  width: 2rem;
+  height: 2rem;
+  @include flex-jc-ic();
+  border: 0.2rem solid transparent;
+  border-radius: 50%;
+  transition: 0.2s;
+  
+  &:hover {
+    border: 0.2rem solid ;
+  }
+}
+
 .btn-s {
   width: 4rem;
   height: 4rem;
