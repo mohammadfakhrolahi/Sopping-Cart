@@ -6,8 +6,6 @@ const cartTotalValue = document.querySelector('.cart-total__value')
 const cartMenu = document.querySelector('.cart-menu')
 const overlay = document.querySelector('.overlay')
 const cartContent = document.querySelector('.cart-content')
-const amountMinus = document.querySelector('#amount-minus')
-const amountPlus = document.querySelector('#amount-plus')
 const clearCartBtn = document.querySelector('#clear-cart-btn')
 const cartItemRemoveBtn = document.querySelectorAll('.cart-item__remove-btn')
 const emptyCartMsg = document.querySelector('.empty-cart-msg')
@@ -120,9 +118,9 @@ class View {
     <p class="cart-item__name">${item.title}</p>
     <p class="cart-item__price">$${item.price}</p>
     <div class="cart-item__amount">
-      <i class="fa-solid fa-minus" id="amount-minus"></i>
+      <i class="fa-solid fa-minus amount-minus" data-id="${item.id}"></i>
       <p class="cart-item__amount-number">${item.amount}</p>
-      <i class="fa-solid fa-plus" id="amount-plus"></i>            
+      <i class="fa-solid fa-plus amount-plus" data-id="${item.id}"></i>            
     </div>
     <button class="cart-item__remove-btn btn-xs" data-id="${item.id}">Remove</button>
    `
@@ -165,8 +163,9 @@ class View {
       this.showEmptyCartMsg()
     })
 
-    // Remove product from cart
+    // Event listener for when clicked on cart item elements
     cartContent.addEventListener('click', e => {
+      // Remove product from cart
       if (e.target.classList.contains('cart-item__remove-btn')) {
         let removeItem = e.target
         let id = removeItem.dataset.id
@@ -174,7 +173,37 @@ class View {
         cartContent.removeChild(removeItem.parentElement)
 
         this.removeProduct(id)
-        // this.showEmptyCartMsg()
+        this.showEmptyCartMsg()
+      }
+
+      // Increase product
+      if (e.target.classList.contains('amount-plus')) {
+        let addAmount = e.target
+        let id = addAmount.dataset.id
+
+        let product = cart.find(item => item.id === id)
+
+        product.amount = product.amount + 1
+
+        Storage.saveCart(cart)
+        this.setCartValues(cart)
+        // console.log(product.amount)
+        addAmount.previousElementSibling.innerText = product.amount
+      }
+
+      // Decrease product
+      if (e.target.classList.contains('amount-minus')) {
+        let addAmount = e.target
+        let id = addAmount.dataset.id
+
+        let product = cart.find(item => item.id === id)
+
+        product.amount = product.amount - 1
+
+        Storage.saveCart(cart)
+        this.setCartValues(cart)
+        // console.log(product.amount)
+        addAmount.nextElementSibling.innerText = product.amount
       }
     })
 
@@ -260,4 +289,3 @@ document.addEventListener('DOMContentLoaded', () => {
       view.cartProcess()
     })
 })
-
