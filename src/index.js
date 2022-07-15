@@ -186,11 +186,6 @@ class View {
 
         product.amount = product.amount + 1
 
-        if (product.amount > 1) {
-          addAmount.classList.remove('cart-item__amount-disable')
-          console.log('ls')
-        }
-        
         Storage.saveCart(cart)
         this.setCartValues(cart)
 
@@ -199,25 +194,24 @@ class View {
 
       // Decrease product
       if (e.target.classList.contains('amount-minus')) {
-        let addAmount = e.target
-        let id = addAmount.dataset.id
+        let lowerAmount = e.target
+        let id = lowerAmount.dataset.id
 
         let product = cart.find(item => item.id === id)
 
         product.amount = product.amount - 1
 
-        if (product.amount == 1) {
-          addAmount.classList.add('cart-item__amount-disable')
+        if (product.amount > 0) {
+          Storage.saveCart(cart)
+          this.setCartValues(cart)
+          lowerAmount.nextElementSibling.innerText = product.amount
+        } else {
+          cartContent.removeChild(lowerAmount.parentElement.parentElement)
+          this.removeProduct(id)
+          this.showEmptyCartMsg()
         }
-
-        Storage.saveCart(cart)
-        this.setCartValues(cart)
-
-        addAmount.nextElementSibling.innerText = product.amount
       }
     })
-
-    
   }
 
   clearCart() {
