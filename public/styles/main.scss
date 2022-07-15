@@ -137,11 +137,16 @@ main {
   padding: 2rem 1rem;
 }
 
+.cart-content-hide {
+  display: none;
+}
+
 // Empty cart message
 .empty-cart-msg {
   color: $secondary-bg;
   height: 100%;
   @include column-jc-ic();
+  user-select: none;
   display: none;
 
   p {

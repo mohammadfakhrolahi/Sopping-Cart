@@ -206,10 +206,15 @@ class View {
     // this.showEmptyCartMsg()
   }
 
+  // Empty cart message
   showEmptyCartMsg() {
-    cart.length == 0
-      ? emptyCartMsg.classList.add('empty-cart-msg-visible')
-      : emptyCartMsg.classList.remove('empty-cart-msg-visible')
+    if (cart.length == 0) {
+      emptyCartMsg.classList.add('empty-cart-msg-visible')
+      cartContent.classList.add('cart-content-hide')
+    } else {
+      emptyCartMsg.classList.remove('empty-cart-msg-visible')
+      cartContent.classList.remove('cart-content-hide')
+    }
   }
 }
 
