@@ -9,6 +9,7 @@ const cartContent = document.querySelector('.cart-content')
 const clearCartBtn = document.querySelector('#clear-cart-btn')
 const cartItemRemoveBtn = document.querySelectorAll('.cart-item__remove-btn')
 const emptyCartMsg = document.querySelector('.empty-cart-msg')
+const amountMinus = document.querySelector('.amount-minus')
 
 // Cart
 let cart = []
@@ -185,9 +186,14 @@ class View {
 
         product.amount = product.amount + 1
 
+        if (product.amount > 1) {
+          addAmount.classList.remove('cart-item__amount-disable')
+          console.log('ls')
+        }
+        
         Storage.saveCart(cart)
         this.setCartValues(cart)
-        // console.log(product.amount)
+
         addAmount.previousElementSibling.innerText = product.amount
       }
 
@@ -200,9 +206,13 @@ class View {
 
         product.amount = product.amount - 1
 
+        if (product.amount == 1) {
+          addAmount.classList.add('cart-item__amount-disable')
+        }
+
         Storage.saveCart(cart)
         this.setCartValues(cart)
-        // console.log(product.amount)
+
         addAmount.nextElementSibling.innerText = product.amount
       }
     })

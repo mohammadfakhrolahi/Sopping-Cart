@@ -35,6 +35,10 @@
   cursor: pointer;
 }
 
+.cart-item__amount-disable {
+  display: none;
+}
+
 .btn-xs {
   background: transparent;
   color: $red;

@@ -116,6 +116,10 @@ hr {
   cursor: pointer;
 }
 
+.cart-item__amount-disable {
+  display: none;
+}
+
 .btn-xs {
   background: transparent;
   color: #FA243C;
