@@ -18,16 +18,15 @@ let cart = []
 class Product {
   async getProducts() {
     try {
-      const result = await fetch('products.json')
+      const result = await fetch('https://fakestoreapi.com/products')
       const data = await result.json()
 
-      let products = data.items
+      let products = data
 
       // Extract data
       products = products.map(item => {
-        const { title, price } = item.fields
-        const { id } = item.sys
-        const image = item.fields.image.fields.file.url
+        const { title, price, id, image } = item
+
         return { title, price, id, image }
       })
 
@@ -89,6 +88,8 @@ class View {
         Storage.saveCart(cart)
         this.addCartIem(cartItem)
         this.showEmptyCartMsg()
+
+        console.log(cartItem)
       })
     })
   }
@@ -182,7 +183,7 @@ class View {
         let addAmount = e.target
         let id = addAmount.dataset.id
 
-        let product = cart.find(item => item.id === id)
+        let product = cart.find(item => item.id == id)
 
         product.amount = product.amount + 1
 
@@ -197,7 +198,7 @@ class View {
         let lowerAmount = e.target
         let id = lowerAmount.dataset.id
 
-        let product = cart.find(item => item.id === id)
+        let product = cart.find(item => item.id == id)
 
         product.amount = product.amount - 1
 
@@ -236,7 +237,6 @@ class View {
 
     Storage.saveCart(cart)
     this.setCartValues(cart)
-    // this.showEmptyCartMsg()
   }
 
   // Empty cart message
@@ -260,7 +260,7 @@ class Storage {
   // Find product in localStorage
   static getProduct(id) {
     let products = JSON.parse(localStorage.getItem('products'))
-    return products.find(item => item.id === id)
+    return products.find(item => item.id == id)
   }
 
   // Save cart to local storage
