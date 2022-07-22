@@ -194,9 +194,22 @@ main {
 
 // Product name
 .cart-item__name {
+  height: calc(1 * 2rem);
   grid-column: 2/3;
   grid-row: 1/2;
+  overflow: hidden;
+  position: relative;
   font-size: 1.6rem;
+
+  &:after {
+    content: '';
+    height: 2rem;
+    width: 5rem;
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    background: linear-gradient(90deg, transparent, $secondary-bg);
+  }
 }
 
 // Product price

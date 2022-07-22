@@ -429,9 +429,21 @@ main {
 }
 
 .cart-item__name {
+  height: 2rem;
   grid-column: 2/3;
   grid-row: 1/2;
+  overflow: hidden;
+  position: relative;
   font-size: 1.6rem;
+}
+.cart-item__name:after {
+  content: "";
+  height: 2rem;
+  width: 5rem;
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  background: linear-gradient(90deg, transparent, #e8edf6);
 }
 
 .cart-item__price {
